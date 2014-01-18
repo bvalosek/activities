@@ -17,7 +17,7 @@ test('Basic activity start', function(t) {
 
 });
 
-test('Activity pause', function(t) {
+test('Activity stacking', function(t) {
   t.plan(7);
 
   var m = new ActivityManager();
