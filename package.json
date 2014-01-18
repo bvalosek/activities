@@ -41,5 +41,8 @@
       "ipad/latest",
       "android-browser/latest"
     ]
+  },
+  "dependencies": {
+    "underscore": "~1.5.2"
   }
 }
