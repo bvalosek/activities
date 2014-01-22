@@ -35,7 +35,7 @@ test('Activity stacking', function(t) {
 
 });
 
-test('Activity stacking with finish', function(t) {
+test('Activity with finish', function(t) {
   t.plan(6);
 
   var m = new ActivityManager();
@@ -52,5 +52,28 @@ test('Activity stacking with finish', function(t) {
 
   var a1 = m.start(A);
   m.finish(a1);
+
+});
+
+test('Activity stacking with finish', function(t) {
+  t.plan(11);
+
+  var m = new ActivityManager();
+
+  function A() {
+    this.x = 0;
+    this.onCreate = function() { t.strictEqual(this.x++, 0, 'onCreate called'); };
+    this.onStart = function() { t.strictEqual(this.x++, 1, 'onStart called'); };
+    this.onPause = function() { t.strictEqual(this.x++, 2, 'onPause called'); };
+    this.onStop = function() { t.strictEqual(this.x++, 3, 'onStop called'); };
+    this.onDestroy = function() { t.strictEqual(this.x++, 4, 'onDestroy called'); };
+
+    this.onResume = function() {
+      t.pass('on resume called');
+    };
+  }
+
+  m.start(A); // x3
+  m.finish(m.start(A)); // x1 + x3 + x3 + x1
 
 });
