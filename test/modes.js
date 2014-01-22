@@ -118,14 +118,22 @@ test('Single instance + clear top', function(t) {
 });
 
 test('Single instance + clear top + implicit mode', function(t) {
-  t.plan(3);
+  t.plan(6);
 
   var m = new ActivityManager();
 
   var id = 0;
-  function A() { this.id = id++; this.A = true; }
-  function B() { this.id = id++; this.B = true; }
-  function C() { this.id = id++; this.C = true;}
+  function A() {
+    this.x = 0;
+    this.onPause = function() {
+      t.strictEqual(--this.x, 0);
+    };
+    this.onResume = function() {
+      t.strictEqual(++this.x, 1);
+    }
+  }
+  function B() { }
+  function C() { }
 
   var a1 = m.start(A,
     Activity.modes.SINGLE_INSTANCE | Activity.modes.FLAG_CLEAR_TOP);
