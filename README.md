@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/bvalosek/activities.png?branch=master)](https://travis-ci.org/bvalosek/activities)
 [![NPM version](https://badge.fury.io/js/activities.png)](http://badge.fury.io/js/activities)
 
-Manage and traverse the application stack with managed state lifecycle.
+Traverse the application stack with managed state lifecycle.
 
 [![browser support](https://ci.testling.com/bvalosek/activities.png)](https://ci.testling.com/bvalosek/activities)
 
@@ -15,6 +15,8 @@ install with npm:
 ```
 npm install activities
 ```
+
+## Usage
 
 ## Tern Support
 
