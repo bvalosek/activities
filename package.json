@@ -1,6 +1,6 @@
 {
   "name": "activities",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Traverse the application stack with managed state lifecycle.",
   "keywords": [
     "application",
