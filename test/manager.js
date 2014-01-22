@@ -47,7 +47,7 @@ test('Activity with finish', function(t) {
     this.onResume = function() { t.strictEqual(this.x++, 2, 'onResume called'); };
     this.onPause = function() { t.strictEqual(this.x++, 3, 'onPause called'); };
     this.onStop = function() { t.strictEqual(this.x++, 4, 'onStop called'); };
-    this.onDestroy = function() { t.strictEqual(this.x++, 5, 'onDestroy called'); };
+    this.onDestroy = function(f) { f(); t.strictEqual(this.x++, 5, 'onDestroy called'); };
   }
 
   var a1 = m.start(A);
@@ -66,7 +66,7 @@ test('Activity stacking with finish', function(t) {
     this.onStart = function() { t.strictEqual(this.x++, 1, 'onStart called'); };
     this.onPause = function() { t.strictEqual(this.x++, 2, 'onPause called'); };
     this.onStop = function() { t.strictEqual(this.x++, 3, 'onStop called'); };
-    this.onDestroy = function() { t.strictEqual(this.x++, 4, 'onDestroy called'); };
+    this.onDestroy = function(f) { f(); t.strictEqual(this.x++, 4, 'onDestroy called'); };
 
     this.onResume = function() {
       t.pass('on resume called');
