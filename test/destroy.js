@@ -38,3 +38,20 @@ test('Async destroy + top semantics', function(t) {
   t.strictEqual(m._topFrame().activity, a1);
 });
 
+
+test('No params implying manager finishes', function(t) {
+  t.plan(3);
+
+  var m = new ActivityManager();
+
+  function A()
+  {
+    this.onDestroy = function() { t.pass('fired'); };
+  }
+
+  var a = m.start(A);
+  t.strictEqual(m.count(), 1);
+  m.finish(a);
+  t.strictEqual(m.count(), 0);
+
+});
