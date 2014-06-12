@@ -43,6 +43,8 @@
     ]
   },
   "dependencies": {
-    "underscore": "~1.6.0"
+    "debug": "^1.0.2",
+    "typedef": "^1.0.4",
+    "underscore": "^1.6.0"
   }
 }
